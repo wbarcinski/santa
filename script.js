@@ -1,6 +1,18 @@
-const express = require('express')
-const app = express()
+const fs = require('fs')
 
-app.get('/', (req, res) => res.send('Hello World1!'))
+function question(){
+	fs.readFile('./input.txt', (err,data)=> {
+		const directions = data.toString();
+		const directionsArray = directions.split('');
+		const answer = directionsArray.reduce((acc,currentValue)) =>{
+			if (currentValue ==='(') {
+				return acc +=1
+			} else if (currentValue === ')'){
+				return acc -= 1
+			}
+			}, 0)
+		}
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+	})
+}
+
